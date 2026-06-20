@@ -1,6 +1,7 @@
 package com.example.countrycabinrentaltabletappassignment;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -162,7 +163,13 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            Toast.makeText(this, R.string.ready_for_confirmation_message, Toast.LENGTH_SHORT).show();
+            Intent confirmationIntent = new Intent(this, ConfirmationActivity.class);
+            confirmationIntent.putExtra(ConfirmationActivity.EXTRA_CABIN_NAME, currentBooking.cabinName);
+            confirmationIntent.putExtra(ConfirmationActivity.EXTRA_DATE_RANGE,
+                    formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
+            confirmationIntent.putExtra(ConfirmationActivity.EXTRA_TOTAL_COST,
+                    getString(R.string.total_cost_format, currentBooking.totalCost));
+            startActivity(confirmationIntent);
         });
     }
 
