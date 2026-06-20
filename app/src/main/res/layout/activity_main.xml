@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:fadeScrollbars="false"
     android:fillViewport="true"
@@ -24,7 +24,7 @@
 
             <TextView
                 android:id="@+id/screenTitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/select_cabin_label"
                 android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
@@ -91,7 +91,7 @@
 
             <TextView
                 android:id="@+id/cabinDescription"
-                android:layout_width="742dp"
+                android:layout_width="651dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/cabin_one_description"
@@ -116,7 +116,7 @@
 
             <LinearLayout
                 android:id="@+id/bookingSummaryArea"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
