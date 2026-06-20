@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         TextView cabinDescription = findViewById(R.id.cabinDescription);
         TextView cabinValue = findViewById(R.id.cabinValue);
         TextView datesValue = findViewById(R.id.datesValue);
+        TextView nightlyRateValue = findViewById(R.id.nightlyRateValue);
+        TextView totalCostValue = findViewById(R.id.totalCostValue);
+
+        int initialCabinId = R.id.radioCabinOne;
 
         if (savedInstanceState != null && savedInstanceState.containsKey(STATE_CABIN_NAME)) {
             currentBooking = new BookingData(
@@ -63,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             );
             cabinValue.setText(currentBooking.cabinName);
             datesValue.setText(formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
+            nightlyRateValue.setText(getString(R.string.price_per_night_format, currentBooking.nightlyRate));
+            totalCostValue.setText(getString(R.string.total_cost_format, currentBooking.totalCost));
+            initialCabinId = getCabinIdFromName(currentBooking.cabinName);
         }
 
         cabinRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -75,9 +82,21 @@ public class MainActivity extends AppCompatActivity {
                 cabinImage.setContentDescription(getString(R.string.cabin_two_name));
                 cabinDescription.setText(R.string.cabin_two_description);
             }
+
+            String selectedCabinName = getCabinName(checkedId);
+            double nightlyRate = getNightlyRate(checkedId);
+
+            cabinValue.setText(selectedCabinName);
+            nightlyRateValue.setText(getString(R.string.price_per_night_format, nightlyRate));
+
+            if (currentBooking != null && !currentBooking.cabinName.equals(selectedCabinName)) {
+                currentBooking = null;
+                datesValue.setText("-");
+                totalCostValue.setText("-");
+            }
         });
 
-        cabinRadioGroup.check(R.id.radioCabinOne);
+        cabinRadioGroup.check(initialCabinId);
 
         selectDateButton.setOnClickListener(v -> {
             int checkedId = cabinRadioGroup.getCheckedRadioButtonId();
@@ -91,8 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     this,
                     (view, year, month, dayOfMonth) -> {
                         int selectedCabinId = cabinRadioGroup.getCheckedRadioButtonId();
-                        RadioButton selectedCabinButton = findViewById(selectedCabinId);
-                        String selectedCabinName = selectedCabinButton.getText().toString();
+                        String selectedCabinName = getCabinName(selectedCabinId);
                         double nightlyRate = getNightlyRate(selectedCabinId);
 
                         Calendar firstNight = Calendar.getInstance();
@@ -105,22 +123,24 @@ public class MainActivity extends AppCompatActivity {
                         firstNight.set(Calendar.MILLISECOND, 0);
 
                         Calendar endDate = (Calendar) firstNight.clone();
-            endDate.add(Calendar.DAY_OF_MONTH, STAY_NIGHTS);
+                        endDate.add(Calendar.DAY_OF_MONTH, STAY_NIGHTS);
 
-            long checkInMillis = firstNight.getTimeInMillis();
-            long checkOutMillis = endDate.getTimeInMillis();
-            double totalCost = nightlyRate * STAY_NIGHTS;
+                        long checkInMillis = firstNight.getTimeInMillis();
+                        long checkOutMillis = endDate.getTimeInMillis();
+                        double totalCost = nightlyRate * STAY_NIGHTS;
 
-            currentBooking = new BookingData(
-                selectedCabinName,
-                nightlyRate,
-                checkInMillis,
-                checkOutMillis,
-                totalCost
-            );
+                        currentBooking = new BookingData(
+                            selectedCabinName,
+                            nightlyRate,
+                            checkInMillis,
+                            checkOutMillis,
+                            totalCost
+                        );
 
-            cabinValue.setText(currentBooking.cabinName);
-            datesValue.setText(formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
+                        cabinValue.setText(currentBooking.cabinName);
+                        datesValue.setText(formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
+                        nightlyRateValue.setText(getString(R.string.price_per_night_format, currentBooking.nightlyRate));
+                        totalCostValue.setText(getString(R.string.total_cost_format, currentBooking.totalCost));
                     },
                     today.get(Calendar.YEAR),
                     today.get(Calendar.MONTH),
@@ -160,6 +180,20 @@ public class MainActivity extends AppCompatActivity {
             return CABIN_TWO_NIGHTLY_RATE;
         }
         return CABIN_ONE_NIGHTLY_RATE;
+    }
+
+    private String getCabinName(int cabinId) {
+        if (cabinId == R.id.radioCabinTwo) {
+            return getString(R.string.cabin_two_name);
+        }
+        return getString(R.string.cabin_one_name);
+    }
+
+    private int getCabinIdFromName(String cabinName) {
+        if (getString(R.string.cabin_two_name).equals(cabinName)) {
+            return R.id.radioCabinTwo;
+        }
+        return R.id.radioCabinOne;
     }
 
     private static class BookingData {

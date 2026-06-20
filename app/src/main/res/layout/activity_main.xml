@@ -165,6 +165,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="-" />
+
+                <TextView
+                    android:id="@+id/nightlyRateLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/nightly_rate_label"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nightlyRateValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/totalCostLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/total_cost_label"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/totalCostValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
             </LinearLayout>
         </TableRow>
 
