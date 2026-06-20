@@ -4,12 +4,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fadeScrollbars="false"
     android:fillViewport="true"
+    android:scrollbarSize="6dp"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical"
     tools:context=".MainActivity">
 
     <TableLayout
         android:id="@+id/bookingTable"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:stretchColumns="*">
@@ -47,7 +51,7 @@
             <ImageView
                 android:id="@+id/cabinImage"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="400dp"
                 android:layout_marginTop="12dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/cabin_one_name"
@@ -82,39 +86,25 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/cabinDescription"
+                android:layout_width="742dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/cabinOneDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cabin_one_description"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-
-                <TextView
-                    android:id="@+id/cabinTwoDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/cabin_two_description"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-            </LinearLayout>
+                android:text="@string/cabin_one_description"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/selectDateButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:text="@string/select_dates_button" />
