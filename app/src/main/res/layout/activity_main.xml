@@ -109,7 +109,7 @@
                                         android:adjustViewBounds="true"
                                         android:contentDescription="@string/cabin_one_name"
                                         android:scaleType="centerCrop"
-                                        android:src="@drawable/cabin" />
+                                        android:src="@drawable/mountain_view_cabin" />
 
                                     <TextView
                                         android:id="@+id/cabinOneDescription"
@@ -149,7 +149,7 @@
                                         android:adjustViewBounds="true"
                                         android:contentDescription="@string/cabin_two_name"
                                         android:scaleType="centerCrop"
-                                        android:src="@drawable/cabin" />
+                                        android:src="@drawable/cabin_in_the_woods" />
 
                                     <TextView
                                         android:id="@+id/cabinTwoDescription"

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Country Cabin Rental Tablet App Assignment</string>
+    
+    <!-- Cabin Names -->
+    <string name="cabin_one_name">Mountain View Lodge</string>
+    <string name="cabin_two_name">Forest Hidden Retreat</string>
+    
+    <!-- Cabin Descriptions -->
+    <string name="cabin_one_description">Perched on a hillside overlooking panoramic mountain vistas, Mountain View Lodge offers a serene escape with stunning sunrise views. This modern rustic cabin features floor-to-ceiling windows, a stone fireplace, and a wraparound deck perfect for stargazing. Ideal for couples seeking romance and nature lovers craving breathtaking scenery.</string>
+    <string name="cabin_two_description">Nestled deep in an ancient forest surrounded by towering pines and autumn foliage, Forest Hidden Retreat is your private sanctuary away from the world. This cozy woodland cabin includes a hot tub on the back patio, a wood-burning stove, and proximity to hiking trails. Perfect for those seeking peace, solitude, and a genuine connection with nature.</string>
+    
+    <!-- UI Labels -->
+    <string name="select_cabin_label">Select Your Cabin</string>
+    <string name="select_dates_button">Select Check-In Date</string>
+    <string name="instructions">Choose a cabin and pick your arrival date for a 3-night stay</string>
+    
+    <!-- Booking Summary -->
+    <string name="booking_summary_label">Your Booking</string>
+    <string name="booking_empty_state">Select a cabin and date to see your booking details</string>
+    <string name="cabin_label">Cabin:</string>
+    <string name="dates_label">Dates:</string>
 </resources>
