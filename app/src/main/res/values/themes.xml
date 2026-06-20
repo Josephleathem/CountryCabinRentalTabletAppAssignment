@@ -1,8 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.CountryCabinRentalTabletAppAssignment" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/cabin_primary</item>
+        <item name="colorOnPrimary">@color/cabin_on_primary</item>
+        <item name="colorPrimaryContainer">@color/cabin_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/cabin_on_primary_container</item>
+
+        <item name="colorSecondary">@color/cabin_secondary</item>
+        <item name="colorOnSecondary">@color/cabin_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/cabin_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/cabin_on_secondary_container</item>
+
+        <item name="colorTertiary">@color/cabin_tertiary</item>
+        <item name="colorOnTertiary">@color/cabin_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/cabin_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/cabin_on_tertiary_container</item>
+
+        <item name="colorError">@color/cabin_error</item>
+        <item name="colorOnError">@color/cabin_on_error</item>
+
+        <item name="android:colorBackground">@color/cabin_background</item>
+        <item name="colorOnBackground">@color/cabin_on_background</item>
+        <item name="colorSurface">@color/cabin_surface</item>
+        <item name="colorOnSurface">@color/cabin_on_surface</item>
+        <item name="colorSurfaceVariant">@color/cabin_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/cabin_on_surface_variant</item>
+        <item name="colorOutline">@color/cabin_outline</item>
     </style>
 
     <style name="Theme.CountryCabinRentalTabletAppAssignment" parent="Base.Theme.CountryCabinRentalTabletAppAssignment" />

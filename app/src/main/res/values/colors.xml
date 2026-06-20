@@ -1,5 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="cabin_primary">#2F5D50</color>
+    <color name="cabin_on_primary">#FFFFFF</color>
+    <color name="cabin_primary_container">#CFE9DE</color>
+    <color name="cabin_on_primary_container">#0F2E26</color>
+
+    <color name="cabin_secondary">#7A4E2A</color>
+    <color name="cabin_on_secondary">#FFFFFF</color>
+    <color name="cabin_secondary_container">#F4DDC8</color>
+    <color name="cabin_on_secondary_container">#2E1808</color>
+
+    <color name="cabin_tertiary">#5B6232</color>
+    <color name="cabin_on_tertiary">#FFFFFF</color>
+    <color name="cabin_tertiary_container">#DFE7BA</color>
+    <color name="cabin_on_tertiary_container">#1D210A</color>
+
+    <color name="cabin_error">#B3261E</color>
+    <color name="cabin_on_error">#FFFFFF</color>
+
+    <color name="cabin_background">#F6F2EA</color>
+    <color name="cabin_on_background">#1D1B17</color>
+    <color name="cabin_surface">#FFFDF8</color>
+    <color name="cabin_on_surface">#1D1B17</color>
+    <color name="cabin_surface_variant">#E8E1D6</color>
+    <color name="cabin_on_surface_variant">#4C453C</color>
+    <color name="cabin_outline">#7E766B</color>
+
+    <color name="cabin_primary_dark">#9FD3C2</color>
+    <color name="cabin_on_primary_dark">#13372E</color>
+    <color name="cabin_primary_container_dark">#214A3F</color>
+    <color name="cabin_on_primary_container_dark">#CFE9DE</color>
+
+    <color name="cabin_secondary_dark">#E6C4A5</color>
+    <color name="cabin_on_secondary_dark">#45260F</color>
+    <color name="cabin_secondary_container_dark">#5B381B</color>
+    <color name="cabin_on_secondary_container_dark">#F4DDC8</color>
+
+    <color name="cabin_tertiary_dark">#C8D69A</color>
+    <color name="cabin_on_tertiary_dark">#2F350F</color>
+    <color name="cabin_tertiary_container_dark">#454C21</color>
+    <color name="cabin_on_tertiary_container_dark">#DFE7BA</color>
+
+    <color name="cabin_error_dark">#F2B8B5</color>
+    <color name="cabin_on_error_dark">#601410</color>
+
+    <color name="cabin_background_dark">#151311</color>
+    <color name="cabin_on_background_dark">#E9E2D9</color>
+    <color name="cabin_surface_dark">#1E1B18</color>
+    <color name="cabin_on_surface_dark">#E9E2D9</color>
+    <color name="cabin_surface_variant_dark">#4C453C</color>
+    <color name="cabin_on_surface_variant_dark">#CFC7BC</color>
+    <color name="cabin_outline_dark">#999084</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
