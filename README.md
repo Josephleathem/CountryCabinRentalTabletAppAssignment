@@ -63,3 +63,20 @@ For this program, attach the two required files to your submission:
 - Selected cabin name appears with the date range.
 - A custom app theme is applied.
 - Screen content is organized using a TableLayout.
+
+# Week 2: Assignment Country Cabin Rental Tablet App Part II
+
+#### ***Course Objectives Covered***
+
+- CO2 Develop an Android tablet application featuring a modern design layout, date and time components, and functionality to select, display, and manage dates using appropriate classes, methods, and themes.
+
+***Prompt*** In this project, you'll update Country Cabin Rental Tablet App with the following three features.
+
+1. **Cost Calculation**:
+   - Add a feature to calculate the total cost for the three-night stay based on the selected cabin.
+2. **Confirmation Screen**:
+   - After selecting dates, show a summary screen with the cabin name, reservation dates, and total cost.
+3. **Reserve Button**:
+   - Include a "Reserve" button on the confirmation screen that confirms the booking.
+
+These additions make the app more complete by calculating costs and allowing reservation confirmation.
