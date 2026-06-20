@@ -21,6 +21,19 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int STAY_NIGHTS = 3;
+    private static final double CABIN_ONE_NIGHTLY_RATE = 225.00;
+    private static final double CABIN_TWO_NIGHTLY_RATE = 180.00;
+
+    private static final String STATE_CABIN_NAME = "state_cabin_name";
+    private static final String STATE_NIGHTLY_RATE = "state_nightly_rate";
+    private static final String STATE_CHECK_IN_MILLIS = "state_check_in_millis";
+    private static final String STATE_CHECK_OUT_MILLIS = "state_check_out_millis";
+    private static final String STATE_TOTAL_COST = "state_total_cost";
+
+    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault());
+    private BookingData currentBooking;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +51,18 @@ public class MainActivity extends AppCompatActivity {
         TextView cabinDescription = findViewById(R.id.cabinDescription);
         TextView cabinValue = findViewById(R.id.cabinValue);
         TextView datesValue = findViewById(R.id.datesValue);
+
+        if (savedInstanceState != null && savedInstanceState.containsKey(STATE_CABIN_NAME)) {
+            currentBooking = new BookingData(
+                savedInstanceState.getString(STATE_CABIN_NAME, ""),
+                savedInstanceState.getDouble(STATE_NIGHTLY_RATE, 0.0),
+                savedInstanceState.getLong(STATE_CHECK_IN_MILLIS, 0L),
+                savedInstanceState.getLong(STATE_CHECK_OUT_MILLIS, 0L),
+                savedInstanceState.getDouble(STATE_TOTAL_COST, 0.0)
+            );
+            cabinValue.setText(currentBooking.cabinName);
+            datesValue.setText(formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
+        }
 
         cabinRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.radioCabinOne) {
@@ -67,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         int selectedCabinId = cabinRadioGroup.getCheckedRadioButtonId();
                         RadioButton selectedCabinButton = findViewById(selectedCabinId);
                         String selectedCabinName = selectedCabinButton.getText().toString();
+                        double nightlyRate = getNightlyRate(selectedCabinId);
 
                         Calendar firstNight = Calendar.getInstance();
                         firstNight.set(Calendar.YEAR, year);
@@ -78,15 +104,22 @@ public class MainActivity extends AppCompatActivity {
                         firstNight.set(Calendar.MILLISECOND, 0);
 
                         Calendar endDate = (Calendar) firstNight.clone();
-                        endDate.add(Calendar.DAY_OF_MONTH, 3);
+            endDate.add(Calendar.DAY_OF_MONTH, STAY_NIGHTS);
 
-                        SimpleDateFormat formatter = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault());
-                        String formattedRange = formatter.format(firstNight.getTime())
-                                + " - "
-                                + formatter.format(endDate.getTime());
+            long checkInMillis = firstNight.getTimeInMillis();
+            long checkOutMillis = endDate.getTimeInMillis();
+            double totalCost = nightlyRate * STAY_NIGHTS;
 
-                        cabinValue.setText(selectedCabinName);
-                        datesValue.setText(formattedRange);
+            currentBooking = new BookingData(
+                selectedCabinName,
+                nightlyRate,
+                checkInMillis,
+                checkOutMillis,
+                totalCost
+            );
+
+            cabinValue.setText(currentBooking.cabinName);
+            datesValue.setText(formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
                     },
                     today.get(Calendar.YEAR),
                     today.get(Calendar.MONTH),
@@ -95,5 +128,52 @@ public class MainActivity extends AppCompatActivity {
 
             datePickerDialog.show();
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (currentBooking == null) {
+            return;
+        }
+
+        outState.putString(STATE_CABIN_NAME, currentBooking.cabinName);
+        outState.putDouble(STATE_NIGHTLY_RATE, currentBooking.nightlyRate);
+        outState.putLong(STATE_CHECK_IN_MILLIS, currentBooking.checkInMillis);
+        outState.putLong(STATE_CHECK_OUT_MILLIS, currentBooking.checkOutMillis);
+        outState.putDouble(STATE_TOTAL_COST, currentBooking.totalCost);
+    }
+
+    private String formatDateRange(long checkInMillis, long checkOutMillis) {
+        return formatDate(checkInMillis) + " - " + formatDate(checkOutMillis);
+    }
+
+    private String formatDate(long dateMillis) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(dateMillis);
+        return dateFormatter.format(calendar.getTime());
+    }
+
+    private double getNightlyRate(int cabinId) {
+        if (cabinId == R.id.radioCabinTwo) {
+            return CABIN_TWO_NIGHTLY_RATE;
+        }
+        return CABIN_ONE_NIGHTLY_RATE;
+    }
+
+    private static class BookingData {
+        private final String cabinName;
+        private final double nightlyRate;
+        private final long checkInMillis;
+        private final long checkOutMillis;
+        private final double totalCost;
+
+        private BookingData(String cabinName, double nightlyRate, long checkInMillis, long checkOutMillis, double totalCost) {
+            this.cabinName = cabinName;
+            this.nightlyRate = nightlyRate;
+            this.checkInMillis = checkInMillis;
+            this.checkOutMillis = checkOutMillis;
+            this.totalCost = totalCost;
+        }
     }
 }
