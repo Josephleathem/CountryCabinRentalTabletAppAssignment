@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String STATE_CHECK_OUT_MILLIS = "state_check_out_millis";
     private static final String STATE_TOTAL_COST = "state_total_cost";
 
-    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormatter;
     private BookingData currentBooking;
 
     @Override
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        dateFormatter = new SimpleDateFormat(getString(R.string.date_display_pattern), Locale.getDefault());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         selectDateButton.setOnClickListener(v -> {
             int checkedId = cabinRadioGroup.getCheckedRadioButtonId();
             if (checkedId == -1) {
-                Toast.makeText(this, "Please select a cabin first.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.error_select_cabin_first, Toast.LENGTH_SHORT).show();
                 return;
             }
 

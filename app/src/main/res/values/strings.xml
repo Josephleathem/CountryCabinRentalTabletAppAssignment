@@ -19,4 +19,28 @@
     <string name="booking_empty_state">Select a cabin and date to see your booking details</string>
     <string name="cabin_label">Cabin:</string>
     <string name="dates_label">Dates:</string>
+
+    <!-- Pricing -->
+    <string name="nightly_rate_label">Nightly Rate:</string>
+    <string name="total_cost_label">Total Cost (3 Nights):</string>
+    <string name="price_per_night_format">$%.2f/night</string>
+    <string name="total_cost_format">$%.2f</string>
+
+    <!-- Confirmation -->
+    <string name="confirmation_title">Reservation Summary</string>
+    <string name="confirmation_cabin_label">Cabin Name:</string>
+    <string name="confirmation_dates_label">Reservation Dates:</string>
+    <string name="confirmation_total_label">Total Cost:</string>
+
+    <!-- Buttons -->
+    <string name="continue_to_confirmation_button">Continue to Confirmation</string>
+    <string name="reserve_button">Reserve</string>
+
+    <!-- Validation and Messages -->
+    <string name="error_select_cabin_first">Please select a cabin first.</string>
+    <string name="error_select_date_first">Please select a check-in date first.</string>
+    <string name="booking_confirmed_message">Your booking has been confirmed.</string>
+
+    <!-- Formatting -->
+    <string name="date_display_pattern">MMM d, yyyy</string>
 </resources>
