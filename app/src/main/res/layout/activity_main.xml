@@ -1,270 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".MainActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/contentScroll"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <TableLayout
+        android:id="@+id/bookingTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:stretchColumns="*">
 
-        <LinearLayout
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="24dp"
-            android:paddingTop="20dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="24dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/screenTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/select_cabin_label"
-                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
                 android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/instructionsText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/instructions"
                 android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+        </TableRow>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/mainContentPanel"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/cabinImage"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="12dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/cabin_one_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mountain_view_cabin" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/cabinRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="14dp"
+                android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cabinSelectionCard"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radioCabinOne"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintEnd_toStartOf="@id/verticalDividerGuide"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:strokeColor="#22000000"
-                    app:strokeWidth="1dp">
+                    android:text="@string/cabin_one_name" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/select_cabin_label"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-                            android:textStyle="bold" />
-
-                        <RadioGroup
-                            android:id="@+id/cabinRadioGroup"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp">
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="12dp"
-                                app:cardCornerRadius="14dp"
-                                app:strokeColor="#22000000"
-                                app:strokeWidth="1dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:padding="12dp">
-
-                                    <RadioButton
-                                        android:id="@+id/radioCabinOne"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/cabin_one_name"
-                                        android:textStyle="bold" />
-
-                                    <ImageView
-                                        android:id="@+id/cabinOneImage"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="170dp"
-                                        android:layout_marginTop="8dp"
-                                        android:adjustViewBounds="true"
-                                        android:contentDescription="@string/cabin_one_name"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/mountain_view_cabin" />
-
-                                    <TextView
-                                        android:id="@+id/cabinOneDescription"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="@string/cabin_one_description"
-                                        android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-                                </LinearLayout>
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:cardCornerRadius="14dp"
-                                app:strokeColor="#22000000"
-                                app:strokeWidth="1dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:padding="12dp">
-
-                                    <RadioButton
-                                        android:id="@+id/radioCabinTwo"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/cabin_two_name"
-                                        android:textStyle="bold" />
-
-                                    <ImageView
-                                        android:id="@+id/cabinTwoImage"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="170dp"
-                                        android:layout_marginTop="8dp"
-                                        android:adjustViewBounds="true"
-                                        android:contentDescription="@string/cabin_two_name"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/cabin_in_the_woods" />
-
-                                    <TextView
-                                        android:id="@+id/cabinTwoDescription"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="@string/cabin_two_description"
-                                        android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-                                </LinearLayout>
-                            </com.google.android.material.card.MaterialCardView>
-                        </RadioGroup>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/selectDateButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="@string/select_dates_button" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/bookingSummaryCard"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radioCabinTwo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/verticalDividerGuide"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:strokeColor="#22000000"
-                    app:strokeWidth="1dp">
+                    android:layout_marginTop="8dp"
+                    android:text="@string/cabin_two_name" />
+            </RadioGroup>
+        </TableRow>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/bookingSummaryTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/booking_summary_label"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-                            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/bookingSummaryHint"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/booking_empty_state"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="14dp"
-                            android:background="#22000000" />
-
-                        <TextView
-                            android:id="@+id/cabinLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="14dp"
-                            android:text="@string/cabin_label"
-                            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/cabinValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="-"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-                        <TextView
-                            android:id="@+id/datesLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="14dp"
-                            android:text="@string/dates_label"
-                            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/datesValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="-"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/confirmBookingButton"
-                            style="@style/Widget.Material3.Button.TonalButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="18dp"
-                            android:text="Confirm Booking"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/verticalDividerGuide"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/cabinOneDescription"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.6" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+                    android:text="@string/cabin_one_description"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/cabinTwoDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/cabin_two_description"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/selectDateButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/select_dates_button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/bookingSummaryArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/bookingSummaryTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/booking_summary_label"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bookingSummaryHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/booking_empty_state"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+                <TextView
+                    android:id="@+id/cabinLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/cabin_label"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cabinValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/datesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/dates_label"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/datesValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
+            </LinearLayout>
+        </TableRow>
+
+    </TableLayout>
+</ScrollView>
