@@ -40,7 +40,9 @@
     <string name="error_select_cabin_first">Please select a cabin first.</string>
     <string name="error_select_date_first">Please select a check-in date first.</string>
     <string name="booking_confirmed_message">Your booking has been confirmed.</string>
+    <string name="ready_for_confirmation_message">Booking details are valid. Proceeding to confirmation.</string>
 
     <!-- Formatting -->
     <string name="date_display_pattern">MMM d, yyyy</string>
+    <string name="placeholder_value">-</string>
 </resources>

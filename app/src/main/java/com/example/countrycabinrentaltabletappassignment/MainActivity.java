@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         TextView datesValue = findViewById(R.id.datesValue);
         TextView nightlyRateValue = findViewById(R.id.nightlyRateValue);
         TextView totalCostValue = findViewById(R.id.totalCostValue);
+        Button continueButton = findViewById(R.id.continueButton);
 
         int initialCabinId = R.id.radioCabinOne;
 
@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
             totalCostValue.setText(getString(R.string.total_cost_format, currentBooking.totalCost));
             initialCabinId = getCabinIdFromName(currentBooking.cabinName);
         }
+
+        updateContinueButtonState(continueButton);
 
         cabinRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.radioCabinOne) {
@@ -91,9 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
             if (currentBooking != null && !currentBooking.cabinName.equals(selectedCabinName)) {
                 currentBooking = null;
-                datesValue.setText("-");
-                totalCostValue.setText("-");
+                datesValue.setText(R.string.placeholder_value);
+                totalCostValue.setText(R.string.placeholder_value);
             }
+
+            updateContinueButtonState(continueButton);
         });
 
         cabinRadioGroup.check(initialCabinId);
@@ -141,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         datesValue.setText(formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
                         nightlyRateValue.setText(getString(R.string.price_per_night_format, currentBooking.nightlyRate));
                         totalCostValue.setText(getString(R.string.total_cost_format, currentBooking.totalCost));
+                        updateContinueButtonState(continueButton);
                     },
                     today.get(Calendar.YEAR),
                     today.get(Calendar.MONTH),
@@ -148,6 +153,16 @@ public class MainActivity extends AppCompatActivity {
             );
 
             datePickerDialog.show();
+        });
+
+        continueButton.setOnClickListener(v -> {
+            if (!isBookingValid()) {
+                Toast.makeText(this, R.string.error_select_date_first, Toast.LENGTH_SHORT).show();
+                updateContinueButtonState(continueButton);
+                return;
+            }
+
+            Toast.makeText(this, R.string.ready_for_confirmation_message, Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -194,6 +209,22 @@ public class MainActivity extends AppCompatActivity {
             return R.id.radioCabinTwo;
         }
         return R.id.radioCabinOne;
+    }
+
+    private void updateContinueButtonState(Button continueButton) {
+        continueButton.setEnabled(isBookingValid());
+    }
+
+    private boolean isBookingValid() {
+        if (currentBooking == null) {
+            return false;
+        }
+
+        return !currentBooking.cabinName.isEmpty()
+                && currentBooking.nightlyRate > 0
+                && currentBooking.checkInMillis > 0
+                && currentBooking.checkOutMillis > currentBooking.checkInMillis
+                && currentBooking.totalCost > 0;
     }
 
     private static class BookingData {
