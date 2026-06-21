@@ -165,6 +165,10 @@ public class MainActivity extends AppCompatActivity {
 
             Intent confirmationIntent = new Intent(this, ConfirmationActivity.class);
             confirmationIntent.putExtra(ConfirmationActivity.EXTRA_CABIN_NAME, currentBooking.cabinName);
+                confirmationIntent.putExtra(
+                    ConfirmationActivity.EXTRA_CABIN_DESCRIPTION,
+                    getCabinDescriptionFromName(currentBooking.cabinName)
+                );
             confirmationIntent.putExtra(ConfirmationActivity.EXTRA_DATE_RANGE,
                     formatDateRange(currentBooking.checkInMillis, currentBooking.checkOutMillis));
             confirmationIntent.putExtra(ConfirmationActivity.EXTRA_TOTAL_COST,
@@ -209,6 +213,13 @@ public class MainActivity extends AppCompatActivity {
             return getString(R.string.cabin_two_name);
         }
         return getString(R.string.cabin_one_name);
+    }
+
+    private String getCabinDescriptionFromName(String cabinName) {
+        if (getString(R.string.cabin_two_name).equals(cabinName)) {
+            return getString(R.string.cabin_two_description);
+        }
+        return getString(R.string.cabin_one_description);
     }
 
     private int getCabinIdFromName(String cabinName) {

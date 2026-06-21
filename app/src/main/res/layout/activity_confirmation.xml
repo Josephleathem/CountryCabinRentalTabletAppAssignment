@@ -17,6 +17,9 @@
             android:id="@+id/confirmationTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
             android:text="@string/confirmation_title"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:textStyle="bold" />
@@ -26,41 +29,69 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/confirmation_cabin_label"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/confirmationCabinValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_value" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/placeholder_value"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/confirmationDatesLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/confirmation_dates_label"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/confirmationDatesValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_value" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/placeholder_value"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/confirmationTotalLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/confirmation_total_label"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/confirmationTotalValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_value" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/placeholder_value"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/confirmationBookingMessageValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/placeholder_value"
+            android:textSize="20sp" />
     </LinearLayout>
 </ScrollView>

@@ -31,6 +31,7 @@
     <string name="confirmation_cabin_label">Cabin Name:</string>
     <string name="confirmation_dates_label">Reservation Dates:</string>
     <string name="confirmation_total_label">Total Cost:</string>
+    <string name="confirmation_booking_message_format">Your booking at the %1$s, a cabin %2$s, has been confirmed.</string>
 
     <!-- Buttons -->
     <string name="continue_to_confirmation_button">Continue to Confirmation</string>

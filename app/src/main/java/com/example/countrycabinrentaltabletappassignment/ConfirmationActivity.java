@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class ConfirmationActivity extends AppCompatActivity {
 
     public static final String EXTRA_CABIN_NAME = "extra_cabin_name";
+    public static final String EXTRA_CABIN_DESCRIPTION = "extra_cabin_description";
     public static final String EXTRA_DATE_RANGE = "extra_date_range";
     public static final String EXTRA_TOTAL_COST = "extra_total_cost";
 
@@ -29,13 +30,27 @@ public class ConfirmationActivity extends AppCompatActivity {
         TextView cabinValue = findViewById(R.id.confirmationCabinValue);
         TextView datesValue = findViewById(R.id.confirmationDatesValue);
         TextView totalValue = findViewById(R.id.confirmationTotalValue);
+        TextView bookingMessageValue = findViewById(R.id.confirmationBookingMessageValue);
 
         String cabinName = getIntent().getStringExtra(EXTRA_CABIN_NAME);
+        String cabinDescription = getIntent().getStringExtra(EXTRA_CABIN_DESCRIPTION);
         String dateRange = getIntent().getStringExtra(EXTRA_DATE_RANGE);
         String totalCost = getIntent().getStringExtra(EXTRA_TOTAL_COST);
 
-        cabinValue.setText(cabinName == null ? getString(R.string.placeholder_value) : cabinName);
+        String safeCabinName = (cabinName == null || cabinName.trim().isEmpty())
+            ? getString(R.string.placeholder_value)
+            : cabinName;
+        String safeCabinDescription = (cabinDescription == null || cabinDescription.trim().isEmpty())
+            ? getString(R.string.placeholder_value)
+            : cabinDescription;
+
+        cabinValue.setText(safeCabinName);
         datesValue.setText(dateRange == null ? getString(R.string.placeholder_value) : dateRange);
         totalValue.setText(totalCost == null ? getString(R.string.placeholder_value) : totalCost);
+        bookingMessageValue.setText(getString(
+            R.string.confirmation_booking_message_format,
+            safeCabinName,
+            safeCabinDescription
+        ));
     }
 }
