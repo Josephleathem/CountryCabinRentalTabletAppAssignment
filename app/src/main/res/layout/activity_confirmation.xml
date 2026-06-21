@@ -93,5 +93,12 @@
             android:paddingRight="10dp"
             android:text="@string/placeholder_value"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/reserveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/reserve_button" />
     </LinearLayout>
 </ScrollView>

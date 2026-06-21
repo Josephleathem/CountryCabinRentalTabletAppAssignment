@@ -1,7 +1,9 @@
 package com.example.countrycabinrentaltabletappassignment;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,11 +33,16 @@ public class ConfirmationActivity extends AppCompatActivity {
         TextView datesValue = findViewById(R.id.confirmationDatesValue);
         TextView totalValue = findViewById(R.id.confirmationTotalValue);
         TextView bookingMessageValue = findViewById(R.id.confirmationBookingMessageValue);
+        Button reserveButton = findViewById(R.id.reserveButton);
 
         String cabinName = getIntent().getStringExtra(EXTRA_CABIN_NAME);
         String cabinDescription = getIntent().getStringExtra(EXTRA_CABIN_DESCRIPTION);
         String dateRange = getIntent().getStringExtra(EXTRA_DATE_RANGE);
         String totalCost = getIntent().getStringExtra(EXTRA_TOTAL_COST);
+
+        cabinValue.setText(cabinName == null ? getString(R.string.placeholder_value) : cabinName);
+        datesValue.setText(dateRange == null ? getString(R.string.placeholder_value) : dateRange);
+        totalValue.setText(totalCost == null ? getString(R.string.placeholder_value) : totalCost);
 
         String safeCabinName = (cabinName == null || cabinName.trim().isEmpty())
             ? getString(R.string.placeholder_value)
@@ -44,13 +51,15 @@ public class ConfirmationActivity extends AppCompatActivity {
             ? getString(R.string.placeholder_value)
             : cabinDescription;
 
-        cabinValue.setText(safeCabinName);
-        datesValue.setText(dateRange == null ? getString(R.string.placeholder_value) : dateRange);
-        totalValue.setText(totalCost == null ? getString(R.string.placeholder_value) : totalCost);
         bookingMessageValue.setText(getString(
             R.string.confirmation_booking_message_format,
             safeCabinName,
             safeCabinDescription
         ));
+
+        reserveButton.setOnClickListener(v -> {
+            Toast.makeText(this, R.string.booking_confirmed_message, Toast.LENGTH_SHORT).show();
+            finish();
+        });
     }
 }
